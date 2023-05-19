@@ -5,8 +5,11 @@
  */
 void run_shell(void)
 {
+	char *command;
 	while (1)
 	{
-		_prompt();
+		command = _prompt();
+
+		runcmd(command);
 	}
 }
