@@ -5,9 +5,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
 /******** Function Prototypes ********/
-void _prompt();
-
+void run_shell(void);
+char *_prompt();
 
 #endif /* SHELL_H */
