@@ -6,9 +6,18 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/wait.h>
+
+/******** MACROS *********/
+#define MAX_ARGS 50
 
 /******** Function Prototypes ********/
 void run_shell(void);
 char *_prompt();
+void runcmd(char *cmd);
+pid_t createChildProcess();
+void waitForChild();
+char **tokenizeCommand(char *command);
 
 #endif /* SHELL_H */
