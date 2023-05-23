@@ -1,30 +1,44 @@
 #include "shell.h"
-#define MAX_ARGS 50
 
 /**
- * runcmd - Handles and Executes a command 
- * @cmd: command to be executed
+ * runcmd - Handles and Executes a command
+ * @cmd: Command to be executed
  *
- * Return : nothing
+ * Return: nothing
  */
 void runcmd(char *cmd)
 {
-	char *args[] = {cmd, NULL};
-	pid_t pid - createChildProcess();
+	char *Path, **args = tokenizeCommand(cmd);
+	pid_t pid;
 
-	args[0] = cmd;
-	args[1] = NULL;
+	if (args == NULL)
+	{
+		fprintf(stderr, "Failed to tokenize the command\n");
+		return;
+	}
+
+	Path = searchProgram(args[0]);
+	if (programPath == NULL)
+	{
+		fprintf(stderr, "Command not found: %s\n", args[0]);
+		free(args);
+		return;
+	}
+	pid = createChildProcess();
 
 	if (pid == 0)
 	{
-		execve(cmd, args, NULL);
-	
-	/* If the execution reaches this point,
-	 * it means the command couldn't be executed
-	 */
-	/* perror(args[0]); */
-	perror("./shell");
+		execve(cmd, args, environ);
+
+		/**
+		 * If the execution reaches this point,
+		 * it means the command couldn't be executed
+		 */
+		/* perror(args[0]); */
+
+		perror("./shell");
 	}
-	else waitForChild();
+	else
+		waitForChild();
 
 }
