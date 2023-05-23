@@ -1,6 +1,7 @@
 #include "shell.h"
 /**
  * Displays a prompt and waits for a user to type a command.
+ *
  * Return: A Pointer to the prompt string
  */
 char *_prompt()
