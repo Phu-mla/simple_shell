@@ -19,5 +19,7 @@ void runcmd(char *cmd);
 pid_t createChildProcess();
 void waitForChild();
 char **tokenizeCommand(char *command);
+char *searchProgram(const char *program);
+char *createPath(const char *dir, const char *program);
 
 #endif /* SHELL_H */
