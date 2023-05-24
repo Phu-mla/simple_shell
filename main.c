@@ -8,17 +8,17 @@
  * Return: 1 on success, 0 otherwise
  */
 int main(void) {
-    char* cmd = NULL;
+    char* line = NULL;
     size_t bufsize = 0;
     char* tokens[10];
     char* path;
-    char* full_path;
+    char* fullpath;
     int flag, builtin_status, child_status;
-    struct stat buf;
 
     while (1) {
-        prompt(STDIN_FILENO, buf);
-        ssize_t read = getline(&cmd, &bufsize, stdin);
+        _prompt(STDIN_FILENO, buf);
+
+        ssize_t read = getline(&line, &bufsize, stdin);
         if (read == -1 || line[0] == '\n') {
             continue;
         }
@@ -105,5 +105,6 @@ int main(void) {
     free(line);
     return 0;
 }
+
 
 
