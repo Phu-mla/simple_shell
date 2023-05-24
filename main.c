@@ -2,7 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-
+/**
+ * main - entry point
+ *
+ * Return: 1 on success, 0 otherwise
+ */
 int main(void) {
     char* cmd = NULL;
     size_t bufsize = 0;
