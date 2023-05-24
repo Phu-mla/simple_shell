@@ -3,7 +3,7 @@
 /**
  * waitForChild - waits for child process to terminate
  */
-void waitForChild()
+void waitForChild(void)
 {
 	wait(NULL);
 }

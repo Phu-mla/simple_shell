@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * tokenizeCommand - Tokenize a command string into arguments
+ * @command: The command string to tokenize
+ *
+ * Return: An array of strings representing the arguments,
+ * terminated by a NULL pointer
+ */
 char **tokenizeCommand(char *command)
 {
 	char **args = malloc(MAX_ARGS * sizeof(char *));

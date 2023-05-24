@@ -1,6 +1,6 @@
 #include "shell.h"
 /**
- * Displays a prompt and waits for a user to type a command.
+ * _prompt - Displays a prompt and waits for a user to type a command.
  *
  * Return: A Pointer to the prompt string
  */
@@ -23,6 +23,6 @@ char *_prompt()
 
 	/* Replace trailing newline character with a NULL byte */
 	lineptr[strcspn(lineptr, "\n")] = '\0';
-	
+
 	return (lineptr);
 }
