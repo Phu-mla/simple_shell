@@ -20,6 +20,7 @@ char *_prompt()
 		{
 			free(lineptr);
 			lineptr = NULL;
+			write(STDIN_FILENO, "\n", 1);
 			exit(EXIT_SUCCESS);
 		}
 		else
