@@ -12,14 +12,15 @@
 /******** MACROS *********/
 #define MAX_ARGS 50
 
+/******** Global Variables ********/
+extern char **environ;
+
 /******** Function Prototypes ********/
 void run_shell(void);
 char *_prompt();
 void runcmd(char *cmd);
-pid_t createChildProcess();
-void waitForChild();
+pid_t createChildProcess(void);
+void waitForChild(void);
 char **tokenizeCommand(char *command);
-char *searchProgram(const char *program);
-char *createPath(const char *dir, const char *program);
 
 #endif /* SHELL_H */

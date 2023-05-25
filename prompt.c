@@ -16,13 +16,28 @@ char *_prompt()
 
 	if (chars_read == -1)
 	{
-		printf("\n");
-		free(lineptr);
-		return (NULL);
+		if (feof(stdin))
+		{
+			free(lineptr);
+			lineptr = NULL;
+			exit(EXIT_SUCCESS);
+		}
+		else
+		{
+			perror("getline");
+			exit(EXIT_FAILURE);
+		}
 	}
-
-	/* Replace trailing newline character with a NULL byte */
-	lineptr[strcspn(lineptr, "\n")] = '\0';
+	else if (chars_read == 0)
+	{
+		free(lineptr);
+		lineptr = NULL;
+	}
+	else
+	{
+		/* Replace trailing newline character with a NULL byte */
+		lineptr[strcspn(lineptr, "\n")] = '\0';
+	}
 
 	return (lineptr);
 }
