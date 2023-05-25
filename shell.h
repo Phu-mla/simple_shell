@@ -22,5 +22,6 @@ void runcmd(char *cmd);
 pid_t createChildProcess(void);
 void waitForChild(void);
 char **tokenizeCommand(char *command);
+char *searchProgram(const char *program);
 
 #endif /* SHELL_H */

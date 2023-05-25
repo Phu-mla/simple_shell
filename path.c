@@ -35,7 +35,14 @@ char *createPath(const char *dir, const char *program)
  */
 char *searchProgram(const char *program)
 {
-	char *path, *pathEnv, *token, *programPath;
+	char *path, *pathEnv, *token;
+	char *programPath = malloc(MAX_ARGS);
+
+	if (access(program, X_OK) == 0)
+	{
+		/* The program exists and is executable */
+		return (strdup(program));
+	}
 
 	pathEnv = getenv("PATH");
 	if (pathEnv == NULL)

@@ -8,27 +8,33 @@
  */
 void runcmd(char *cmd)
 {
-	char **args = tokenizeCommand(cmd);
+	char *path, **args = tokenizeCommand(cmd);
 	pid_t pid;
 
 	if (args == NULL)
 	{
 		fprintf(stderr, "Failed to tokenize the command\n");
-		return;
+		exit(EXIT_FAILURE);
 	}
 
-	pid = createChildProcess();
-	if (pid == 0)
+	path = searchProgram(args[0]);
+	if (path != NULL)
 	{
-		execve(cmd, args, environ);
+		pid = createChildProcess();
+		if (pid == 0)
+		{
+			execve(path, args, environ);
 
-		/*
-		 * If the execution reaches this point,
-		 * it means the command couldn't be executed
-		 */
-		/* perror(args[0]); */
-		perror("./shell");
+			/*
+			 * If the execution reaches this point,
+			 * it means the command couldn't be executed
+			 */
+			/* perror(args[0]); */
+			perror("./shell");
+		}
+		else
+			waitForChild();
 	}
 	else
-		waitForChild();
+		printf("Command not found: %s\n", args[0]);
 }
