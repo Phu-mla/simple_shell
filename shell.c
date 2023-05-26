@@ -3,14 +3,28 @@
 /**
  * run_shell - Run the shell
  */
-void run_shell(void)
+void run_shell()
 {
 	char *command;
+	size_t bufsize;
 
-	while (1)
+	if (isatty(STDIN_FILENO))
 	{
-		command = _prompt();
+		while ((command = _prompt()) != NULL)
+		{
+			runcmd(command);
+			free(command);
+		}
+	}
+	else
+	{
+		bufsize = 0;
+		while (getline(&command, &bufsize, stdin) != -1)
+		{
+			command[strcspn(command, "\n")] = '\0';
+			runcmd(command);
+		}
 
-		runcmd(command);
+		free(command);
 	}
 }
