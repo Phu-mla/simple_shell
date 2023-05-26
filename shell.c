@@ -3,7 +3,7 @@
 /**
  * run_shell - Run the shell
  */
-void run_shell()
+void run_shell(void)
 {
 	char *command;
 	size_t bufsize;

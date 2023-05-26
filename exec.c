@@ -37,4 +37,6 @@ void runcmd(char *cmd)
 	}
 	else
 		printf("Command not found: %s\n", args[0]);
+
+	free(args);
 }
