@@ -12,8 +12,8 @@
 #define BUFFER 1024
 #define PROMPT "$"
 
-#define ERR_MALLOC "Failed to malloc space"
-#define ERR_FORK "Fork failure, unable to create child process"
+#define ERR_MALLOC "Failed to malloc space \n"
+#define ERR_FORK "Fork failure, unable to create child process \n"
 #define ERR_PATH "No such file or directory \n"
 
 extern char **environ;
